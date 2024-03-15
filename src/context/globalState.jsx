@@ -7,13 +7,16 @@ export const GlobalContext = createContext(null);
 function GlobalState({children}){
 
     const [productList, setProductList] = useState([]);
+    const [totalCost, setTotalCost] = useState(0);
+    
 
- 
   return (
     <GlobalContext.Provider
     value={{
         productList,
-        setProductList
+        setProductList,
+        totalCost, 
+        setTotalCost
     }}>
         {children}
     </GlobalContext.Provider>

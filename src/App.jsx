@@ -3,6 +3,8 @@ import { Routes, Route } from 'react-router-dom'
 import NavBar from './component/NavBar'
 import Home from './pages/home'
 import Cart from './pages/cart'
+import "./style.css"
+
 
 
 
