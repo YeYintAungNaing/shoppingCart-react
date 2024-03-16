@@ -4,9 +4,10 @@ import Product from '../component/Product';
 
 function Home() {
 
-  const {productList, setProductList} = useContext(GlobalContext);
+  const {productList, setProductList, isLoaded, setIsLoaded} = useContext(GlobalContext);
 
   useEffect(()=> {
+
     async function showProducts(){
         try{
             const response = await fetch('https://fakestoreapi.com/products?limit=20');
@@ -16,6 +17,7 @@ function Home() {
             if (fetchedData){
                 setProductList(fetchedData)
                 //console.log('page refreshed')
+                setIsLoaded(true)
             }
             else{
               throw new Error()
@@ -25,8 +27,10 @@ function Home() {
             console.log("my error")
         }
     }
+    if (!isLoaded){
     showProducts();
-  },[])
+    }
+  },[isLoaded])
   //console.log(productList)
 
   return (

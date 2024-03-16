@@ -1,11 +1,21 @@
 import React,{useContext} from 'react'
 import { GlobalContext } from '../context/globalState'
+import Product from '../component/Product';
 
 
 function Cart() {
-  const {totalCost, setTotalCost} = useContext(GlobalContext);
+  const {totalCost, setTotalCost, cartList, setCartList} = useContext(GlobalContext);
   return (
+    <>
     <h1>{`Total cost: ${totalCost} $`}</h1>
+    {
+      cartList && cartList.length > 0 ? 
+      cartList.map((item)=> 
+      <Product ket = {item.id} product={item}></Product>
+      )
+      : null
+    }
+    </>
   )
 }
 
