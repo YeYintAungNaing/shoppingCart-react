@@ -3,21 +3,24 @@ import { GlobalContext } from '../context/globalState'
 
 function Product({product}) {    //has to make a component for each project since it has own usestate
 
-    const [cartCount, setCartCount] = useState(0);
-    const {productList, totalCost, setTotalCost, cartList, setCartList} = useContext(GlobalContext);
+    const {totalCost, setTotalCost, cartList, setCartList, cartCountList, setCartCountList} = useContext(GlobalContext);
 
-    
+
     function increment(product){
-        //have to add the price to total
-        setCartCount(cartCount+1)
+        let copyCartCountList = cartCountList.slice();
+        copyCartCountList[product.id-1] += 1     // product id - 1 is the same as the index for that product in cartCountList
+        setCartCountList(copyCartCountList)
         setTotalCost(totalCost+product.price)
         setCartList([...cartList, product])
     }
    
 
     function decrement(product){
-        if (cartCount>0){
-            setCartCount(cartCount-1)
+        if (cartCountList[product.id-1]>0){
+            let copyCartCountList = cartCountList.slice();
+            copyCartCountList[product.id-1] -= 1
+            setCartCountList(copyCartCountList)
+            
             setTotalCost(totalCost-product.price) 
             
             const index =cartList.indexOf(product)
@@ -37,7 +40,7 @@ function Product({product}) {    //has to make a component for each project sinc
         <p>{`${product.price} $`}</p>
         <div className='productAddMinus'>
             <button onClick={()=>increment(product)}>+</button> 
-            <p className='cartCount'>{cartCount}</p>
+            <p className='cartCount'>{cartCountList[product.id-1]}</p>
             <button onClick={()=>decrement(product)}>-</button>
         </div> 
     </div>

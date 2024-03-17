@@ -11,7 +11,7 @@ function Cart() {
     {
       cartList && cartList.length > 0 ? 
       cartList.map((item)=> 
-      <Product ket = {item.id} product={item}></Product>
+      <Product key = {item.id} product={item}></Product>
       )
       : null
     }

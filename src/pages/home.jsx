@@ -4,7 +4,7 @@ import Product from '../component/Product';
 
 function Home() {
 
-  const {productList, setProductList, isLoaded, setIsLoaded} = useContext(GlobalContext);
+  const {productList, setProductList, isLoaded, setIsLoaded, setCartCountList} = useContext(GlobalContext);
 
   useEffect(()=> {
 
@@ -16,8 +16,8 @@ function Home() {
 
             if (fetchedData){
                 setProductList(fetchedData)
-                //console.log('page refreshed')
                 setIsLoaded(true)
+                setCartCountList(Array(fetchedData.length).fill(0))
             }
             else{
               throw new Error()

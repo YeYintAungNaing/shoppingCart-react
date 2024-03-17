@@ -6,13 +6,13 @@ export const GlobalContext = createContext(null);
 
 function GlobalState({children}){
 
-    const [productList, setProductList] = useState([]);
-    const [totalCost, setTotalCost] = useState(0);
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [navigationState, setNavigationState] = useState(null);
-    const [cartList, setCartList] = useState([]);
-    
-    
+    const [productList, setProductList] = useState([]);             // original list of products fetched from api
+    const [totalCost, setTotalCost] = useState(0);          
+    const [isLoaded, setIsLoaded] = useState(false);                // state to prevent unnecessary fetching/refrshing
+    const [cartList, setCartList] = useState([]);                   // list of items that are added to the cart( structure is the same as productList)
+    const [cartCountList, setCartCountList] = useState([])          // list to store item count for each product in the cart
+
+
   return (
     <GlobalContext.Provider
     value={{
@@ -22,10 +22,10 @@ function GlobalState({children}){
         setTotalCost, 
         isLoaded, 
         setIsLoaded, 
-        navigationState, 
-        setNavigationState,
         cartList,
-        setCartList
+        setCartList,
+        cartCountList,
+        setCartCountList
     }}>
         {children}
     </GlobalContext.Provider>
