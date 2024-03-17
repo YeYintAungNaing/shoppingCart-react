@@ -4,16 +4,16 @@ import Product from '../component/Product';
 
 
 function Cart() {
-  const {totalCost, setTotalCost, cartList, setCartList} = useContext(GlobalContext);
+  const {totalCost, productList,  cartCountList} = useContext(GlobalContext);
   return (
     <>
-    <h1>{`Total cost: ${totalCost} $`}</h1>
-    {
-      cartList && cartList.length > 0 ? 
-      cartList.map((item)=> 
+    <h1>{`Total cost: ${totalCost.toFixed(2)} $`}</h1>
+    { 
+      productList.map((item)=> 
+      cartCountList[item.id-1] > 0 ?
       <Product key = {item.id} product={item}></Product>
-      )
-      : null
+      
+      : null)
     }
     </>
   )

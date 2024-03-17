@@ -3,7 +3,7 @@ import { GlobalContext } from '../context/globalState'
 
 function Product({product}) {    //has to make a component for each project since it has own usestate
 
-    const {totalCost, setTotalCost, cartList, setCartList, cartCountList, setCartCountList} = useContext(GlobalContext);
+    const {totalCost, setTotalCost, cartCountList, setCartCountList} = useContext(GlobalContext);
 
 
     function increment(product){
@@ -11,7 +11,7 @@ function Product({product}) {    //has to make a component for each project sinc
         copyCartCountList[product.id-1] += 1     // product id - 1 is the same as the index for that product in cartCountList
         setCartCountList(copyCartCountList)
         setTotalCost(totalCost+product.price)
-        setCartList([...cartList, product])
+        
     }
    
 
@@ -20,15 +20,8 @@ function Product({product}) {    //has to make a component for each project sinc
             let copyCartCountList = cartCountList.slice();
             copyCartCountList[product.id-1] -= 1
             setCartCountList(copyCartCountList)
-            
             setTotalCost(totalCost-product.price) 
             
-            const index =cartList.indexOf(product)
-            let copyList = cartList.slice()
-            if (index !== -1){
-                copyList.splice(index, 1);
-                setCartList(copyList)
-            }
         }
     }
     

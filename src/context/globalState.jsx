@@ -9,7 +9,7 @@ function GlobalState({children}){
     const [productList, setProductList] = useState([]);             // original list of products fetched from api
     const [totalCost, setTotalCost] = useState(0);          
     const [isLoaded, setIsLoaded] = useState(false);                // state to prevent unnecessary fetching/refrshing
-    const [cartList, setCartList] = useState([]);                   // list of items that are added to the cart( structure is the same as productList)
+    //const [cartList, setCartList] = useState([]);                   // list of items that are added to the cart( structure is the same as productList)
     const [cartCountList, setCartCountList] = useState([])          // list to store item count for each product in the cart
 
 
@@ -22,8 +22,6 @@ function GlobalState({children}){
         setTotalCost, 
         isLoaded, 
         setIsLoaded, 
-        cartList,
-        setCartList,
         cartCountList,
         setCartCountList
     }}>
