@@ -13,6 +13,9 @@ function GlobalState({children}){
     const [cartCountList, setCartCountList] = useState([])          // list to store item count for each product in the cart
     const [filteredProductsList, setFilteredProductList] = useState([])
     const [searchKey, setSearchKey] = useState("")
+    //const [adminName, setAdminName] = useState('admin');
+    //const [adminPassword, setAdminPassword] = useState('password123');
+    const [validUser, setValidUser] = useState(false);
 
   return (
     <GlobalContext.Provider
@@ -28,7 +31,9 @@ function GlobalState({children}){
         filteredProductsList,
         setFilteredProductList,
         searchKey,
-        setSearchKey
+        setSearchKey,
+        validUser,
+        setValidUser
     }}>
         {children}
     </GlobalContext.Provider>
