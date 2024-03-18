@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react'
+import React, {useContext} from 'react'
 import { GlobalContext } from '../context/globalState'
 
 function Product({product}) {    //has to make a component for each project since it has own usestate
@@ -10,8 +10,7 @@ function Product({product}) {    //has to make a component for each project sinc
         let copyCartCountList = cartCountList.slice();
         copyCartCountList[product.id-1] += 1     // product id - 1 is the same as the index for that product in cartCountList
         setCartCountList(copyCartCountList)
-        setTotalCost(totalCost+product.price)
-        
+        setTotalCost(totalCost+product.price)  
     }
    
 
@@ -21,7 +20,6 @@ function Product({product}) {    //has to make a component for each project sinc
             copyCartCountList[product.id-1] -= 1
             setCartCountList(copyCartCountList)
             setTotalCost(totalCost-product.price) 
-            
         }
     }
     
