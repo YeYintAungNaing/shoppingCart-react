@@ -13,6 +13,9 @@ function NavBar(){
         <li>
             <Link to="/cart">Cart</Link>
         </li>
+        <li>
+            <Link to="/FAQ">FAQ</Link>
+        </li>
     </ul>
   )
 }
